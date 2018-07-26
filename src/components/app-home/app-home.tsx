@@ -1,28 +1,24 @@
-import { Component } from '@stencil/core';
+import { Component, Prop } from '@stencil/core';
 
 
 @Component({
   tag: 'app-home',
   styleUrl: 'app-home.css'
 })
+
 export class AppHome {
+  @Prop() uid: string;
 
   render() {
     return (
       <div class='app-home'>
-        <p>
-          Welcome to the Stencil App Starter.
-          You can use this starter to build entire apps all with
-          web components using Stencil!
-          Check out our docs on <a href='https://stenciljs.com'>stenciljs.com</a> to get started.
-        </p>
-
-        <stencil-route-link url='/profile/stencil'>
-          <button>
-            Profile page
-          </button>
-        </stencil-route-link>
+        <stencil-router>
+          <stencil-route-switch scrollTopOffset={0}>
+            <stencil-route url='/history' component='display-workouts' componentProps={{ uid: this.uid }} />
+            <stencil-route url='/' component='workouts-dashboard' exact={true} componentProps={{ uid: this.uid }} />
+          </stencil-route-switch>
+        </stencil-router>
       </div>
     );
-  }
+  } 
 }

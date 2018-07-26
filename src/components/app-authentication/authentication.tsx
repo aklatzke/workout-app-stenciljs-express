@@ -2,7 +2,10 @@ import { Component, Event, EventEmitter } from '@stencil/core';
 // Necessary to stop tslint from throwing errors
 // for unknown property on Window
 declare global {
-  interface Window { firebase: any; }
+  interface Window { 
+    firebase: any;
+    Plotly: any;
+  }
 }
 
 @Component({

@@ -26,7 +26,6 @@ declare global {
 }
 
 import '@stencil/router';
-import '@stencil/state-tunnel';
 
 import {
   MatchResults,
@@ -35,8 +34,41 @@ import {
 declare global {
 
   namespace StencilComponents {
-    interface AppHome {
+    interface AppAuthentication {
 
+    }
+  }
+
+  interface HTMLAppAuthenticationElement extends StencilComponents.AppAuthentication, HTMLStencilElement {}
+
+  var HTMLAppAuthenticationElement: {
+    prototype: HTMLAppAuthenticationElement;
+    new (): HTMLAppAuthenticationElement;
+  };
+  interface HTMLElementTagNameMap {
+    'app-authentication': HTMLAppAuthenticationElement;
+  }
+  interface ElementTagNameMap {
+    'app-authentication': HTMLAppAuthenticationElement;
+  }
+  namespace JSX {
+    interface IntrinsicElements {
+      'app-authentication': JSXElements.AppAuthenticationAttributes;
+    }
+  }
+  namespace JSXElements {
+    export interface AppAuthenticationAttributes extends HTMLAttributes {
+      'onAuthenticationResponse'?: (event: CustomEvent) => void;
+    }
+  }
+}
+
+
+declare global {
+
+  namespace StencilComponents {
+    interface AppHome {
+      'uid': string;
     }
   }
 
@@ -59,7 +91,7 @@ declare global {
   }
   namespace JSXElements {
     export interface AppHomeAttributes extends HTMLAttributes {
-
+      'uid'?: string;
     }
   }
 }
@@ -134,31 +166,64 @@ declare global {
 declare global {
 
   namespace StencilComponents {
-    interface AppAuthentication {
-
+    interface DisplayWorkouts {
+      'uid': string;
     }
   }
 
-  interface HTMLAppAuthenticationElement extends StencilComponents.AppAuthentication, HTMLStencilElement {}
+  interface HTMLDisplayWorkoutsElement extends StencilComponents.DisplayWorkouts, HTMLStencilElement {}
 
-  var HTMLAppAuthenticationElement: {
-    prototype: HTMLAppAuthenticationElement;
-    new (): HTMLAppAuthenticationElement;
+  var HTMLDisplayWorkoutsElement: {
+    prototype: HTMLDisplayWorkoutsElement;
+    new (): HTMLDisplayWorkoutsElement;
   };
   interface HTMLElementTagNameMap {
-    'app-authentication': HTMLAppAuthenticationElement;
+    'display-workouts': HTMLDisplayWorkoutsElement;
   }
   interface ElementTagNameMap {
-    'app-authentication': HTMLAppAuthenticationElement;
+    'display-workouts': HTMLDisplayWorkoutsElement;
   }
   namespace JSX {
     interface IntrinsicElements {
-      'app-authentication': JSXElements.AppAuthenticationAttributes;
+      'display-workouts': JSXElements.DisplayWorkoutsAttributes;
     }
   }
   namespace JSXElements {
-    export interface AppAuthenticationAttributes extends HTMLAttributes {
-      'onAuthenticationResponse'?: (event: CustomEvent) => void;
+    export interface DisplayWorkoutsAttributes extends HTMLAttributes {
+      'uid'?: string;
+    }
+  }
+}
+
+
+declare global {
+
+  namespace StencilComponents {
+    interface WorkoutsDashboard {
+      'uid': string;
+    }
+  }
+
+  interface HTMLWorkoutsDashboardElement extends StencilComponents.WorkoutsDashboard, HTMLStencilElement {}
+
+  var HTMLWorkoutsDashboardElement: {
+    prototype: HTMLWorkoutsDashboardElement;
+    new (): HTMLWorkoutsDashboardElement;
+  };
+  interface HTMLElementTagNameMap {
+    'workouts-dashboard': HTMLWorkoutsDashboardElement;
+  }
+  interface ElementTagNameMap {
+    'workouts-dashboard': HTMLWorkoutsDashboardElement;
+  }
+  namespace JSX {
+    interface IntrinsicElements {
+      'workouts-dashboard': JSXElements.WorkoutsDashboardAttributes;
+    }
+  }
+  namespace JSXElements {
+    export interface WorkoutsDashboardAttributes extends HTMLAttributes {
+      'uid'?: string;
     }
   }
 }
