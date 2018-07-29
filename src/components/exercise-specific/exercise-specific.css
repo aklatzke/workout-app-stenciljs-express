@@ -1,0 +1,57 @@
+#date-plot{
+    width: 100%;
+}
+
+.tile{
+    width: 50%;
+    float: left;
+    text-align: center;
+    padding-right: 5px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+}
+
+.tile .tile-inner{
+    border: 2px solid #4f69ff;
+    border-radius: 6px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    text-transform: uppercase;
+    font-size: 32px;
+    background-color: #dfe3ff;
+}
+
+.tile + .tile .tile-inner{
+    border-color: #f76c6c;
+    padding-left: 5px;
+    background-color: #ffd7d7;
+}
+
+.tile strong{
+    display: block;
+    font-weight: bold;
+    font-size: 12px;
+    margin-bottom: 10px;
+}
+
+.tile + .tile.tile-full{
+    width: 100%;
+    border-color: #333;
+}
+
+.tile +.tile.tile-full .tile-inner{
+  width: 100%;
+  border-color: #222;
+  background-color: #555;
+  color: #89ffc2;
+}
+
+.tile + .tile-full strong{
+    font-size: 18px;
+    color: white;
+}
+
+.tile small{
+    text-transform: lowercase;
+    
+}

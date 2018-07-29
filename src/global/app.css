@@ -13,9 +13,32 @@ body {
   margin: 0px;
   padding: 0px;
   font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  background-color: #343434;
+  padding-top: 56px;
 }
 
 
 *{
   box-sizing: border-box;
+}
+
+.modebar {
+  display: none !important;
+}
+
+body h1, body h2, body h3, body h4, body h5, body h6{
+  color: white;
+  margin-top: 0px;
+}
+
+body h3{
+  margin-top: 20px;
+}
+
+.navbar{
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: 999;
 }

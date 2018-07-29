@@ -8,23 +8,17 @@ header {
 }
 
 h1 {
-  font-size: 1.4rem;
+  font-size: 2rem;
   font-weight: 500;
   color: #fff;
   padding: 0 12px;
 }
 
-
-.header-left{
-  width: 50%;
-  text-align: left;
-  display: inline-block;
-  padding-left: 30px;
+.header-right span{
+  color: #333;
+  font-size: 12px;
 }
 
-.header-right{
-  width: 50%;
-  text-align: right;
-  float: right;
-  padding-right: 30px;
+.navbar h1.navbar-brand{
+  font-size: 14px;
 }

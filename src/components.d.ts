@@ -199,6 +199,75 @@ declare global {
 declare global {
 
   namespace StencilComponents {
+    interface ExerciseSpecific {
+      'match': MatchResults;
+      'uid': string;
+    }
+  }
+
+  interface HTMLExerciseSpecificElement extends StencilComponents.ExerciseSpecific, HTMLStencilElement {}
+
+  var HTMLExerciseSpecificElement: {
+    prototype: HTMLExerciseSpecificElement;
+    new (): HTMLExerciseSpecificElement;
+  };
+  interface HTMLElementTagNameMap {
+    'exercise-specific': HTMLExerciseSpecificElement;
+  }
+  interface ElementTagNameMap {
+    'exercise-specific': HTMLExerciseSpecificElement;
+  }
+  namespace JSX {
+    interface IntrinsicElements {
+      'exercise-specific': JSXElements.ExerciseSpecificAttributes;
+    }
+  }
+  namespace JSXElements {
+    export interface ExerciseSpecificAttributes extends HTMLAttributes {
+      'match'?: MatchResults;
+      'onChangeBack'?: (event: CustomEvent) => void;
+      'uid'?: string;
+    }
+  }
+}
+
+
+declare global {
+
+  namespace StencilComponents {
+    interface WorkoutList {
+      'uid': string;
+    }
+  }
+
+  interface HTMLWorkoutListElement extends StencilComponents.WorkoutList, HTMLStencilElement {}
+
+  var HTMLWorkoutListElement: {
+    prototype: HTMLWorkoutListElement;
+    new (): HTMLWorkoutListElement;
+  };
+  interface HTMLElementTagNameMap {
+    'workout-list': HTMLWorkoutListElement;
+  }
+  interface ElementTagNameMap {
+    'workout-list': HTMLWorkoutListElement;
+  }
+  namespace JSX {
+    interface IntrinsicElements {
+      'workout-list': JSXElements.WorkoutListAttributes;
+    }
+  }
+  namespace JSXElements {
+    export interface WorkoutListAttributes extends HTMLAttributes {
+      'uid'?: string;
+    }
+  }
+}
+
+
+declare global {
+
+  namespace StencilComponents {
     interface WorkoutsDashboard {
       'uid': string;
     }
@@ -223,6 +292,7 @@ declare global {
   }
   namespace JSXElements {
     export interface WorkoutsDashboardAttributes extends HTMLAttributes {
+      'onChangeBack'?: (event: CustomEvent) => void;
       'uid'?: string;
     }
   }
