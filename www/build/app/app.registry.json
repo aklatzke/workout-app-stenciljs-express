@@ -1,0 +1,64 @@
+{
+  "namespace": "App",
+  "fsNamespace": "app",
+  "loader": "../app.js",
+  "global": "app.global.js",
+  "core": "app.vwnlfls8.js",
+  "corePolyfilled": "app.ywobmiif.js",
+  "components": {
+    "active-workout": {
+      "$": "ge4gxuoo"
+    },
+    "active-workout-bar": {
+      "$": "rh3kbbdg"
+    },
+    "add-exercise": {
+      "$": "yahdu7bt"
+    },
+    "app-authentication": {
+      "$": "rh3kbbdg"
+    },
+    "app-home": {
+      "$": "cotdvesv"
+    },
+    "app-profile": {
+      "$": "ucc3bman"
+    },
+    "app-root": {
+      "$": "rh3kbbdg"
+    },
+    "display-workouts": {
+      "$": "97cbuadv"
+    },
+    "exercise-group": {
+      "$": "yahdu7bt"
+    },
+    "exercise-single": {
+      "$": "ge4gxuoo"
+    },
+    "exercise-specific": {
+      "$": "zwyr53wo"
+    },
+    "new-workout": {
+      "$": "wzzqawsd"
+    },
+    "stencil-route": {
+      "$": "m1ly74ym"
+    },
+    "stencil-route-link": {
+      "$": "jbntkkin"
+    },
+    "stencil-route-switch": {
+      "$": "m1ly74ym"
+    },
+    "stencil-router": {
+      "$": "m1ly74ym"
+    },
+    "workout-list": {
+      "$": "d1xzug9o"
+    },
+    "workouts-dashboard": {
+      "$": "d1xzug9o"
+    }
+  }
+}
