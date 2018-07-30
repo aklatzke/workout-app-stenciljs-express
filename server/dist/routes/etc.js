@@ -132,7 +132,7 @@ exports.default = (r, db) => {
             muscleGroup: arr[1].trim()
         }));
 
-        await db.exerciseReference.delete({});
+        await db.exerciseReference.remove({});
 
         let records = await db.exerciseReference.insert(rows);
 
