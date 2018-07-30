@@ -10,5 +10,5 @@ var _thenMongo2 = _interopRequireDefault(_thenMongo);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-exports.default = (0, _thenMongo2.default)('workout', ['workouts', 'users', 'exercises', 'exerciseReference']);
+exports.default = (0, _thenMongo2.default)(process.env.MONGODB_URI || 'workouts', ['workouts', 'users', 'exercises', 'exerciseReference']);
 //# sourceMappingURL=index.js.map
