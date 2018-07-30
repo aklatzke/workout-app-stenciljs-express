@@ -17,7 +17,7 @@ export class WorkoutList {
     @State() list: WorkoutResponse[] = [];
 
     async componentDidLoad(){
-        let response = await get(`http://localhost:8080/user/exercises/all/?uid=${this.uid}`);
+        let response = await get(`/user/exercises/all/?uid=${this.uid}`);
         this.list = [...response];
     }
 

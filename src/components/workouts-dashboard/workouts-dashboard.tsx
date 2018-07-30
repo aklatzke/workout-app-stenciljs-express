@@ -21,7 +21,7 @@ export class WorkoutsDashboard {
   plotly: any = window.Plotly;
 
   componentDidLoad = async () => {
-    let response : ResponseType = await get(`http://localhost:8080/user/${this.uid}/workouts/overview`);
+    let response : ResponseType = await get(`/user/${this.uid}/workouts/overview`);
     
     let workoutXAxis = Object.keys(response.favWorkouts);
     let workoutYAxis = workoutXAxis.map( key => response.favWorkouts[key] );

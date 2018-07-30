@@ -15,7 +15,7 @@ export class ExerciseGroup {
 
     async addExercise(id){
         console.log(this.activeWorkout)
-        let response = await get(`http://localhost:8080/workout/${this.activeWorkout}/add/${id}`);
+        let response = await get(`/workout/${this.activeWorkout}/add/${id}`);
 
         console.log(response);
     }

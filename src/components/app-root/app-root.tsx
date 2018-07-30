@@ -29,10 +29,10 @@ export class AppRoot {
 
         this.isAuthenticated = true;
 
-        let response = await post("http://localhost:8080/user/findOrCreate", userDetails);
+        let response = await post("/user/findOrCreate", userDetails);
 
         this.activeUser = response;
-        this.activeWorkout = await get(`http://localhost:8080/user/${this.activeUser._id}/workout/active`);        
+        this.activeWorkout = await get(`/user/${this.activeUser._id}/workout/active`);        
         if( this.activeWorkout )
           this.hasActiveWorkout = true;
       }
@@ -61,7 +61,7 @@ export class AppRoot {
 
   @Listen('activeWorkoutChange')
   async activeWorkoutChange(){
-    this.activeWorkout = await get(`http://localhost:8080/user/${this.activeUser._id}/workout/active`);
+    this.activeWorkout = await get(`/user/${this.activeUser._id}/workout/active`);
     if (this.activeWorkout)
       this.hasActiveWorkout = true;    
     else

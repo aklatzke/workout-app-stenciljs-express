@@ -10,7 +10,7 @@ export class DisplayWorkouts {
   @Prop() uid: string;
 
   componentDidLoad = async () => {
-    let response = await get(`http://localhost:8080/user/workouts?uid=${this.uid}`);
+    let response = await get(`/user/workouts?uid=${this.uid}`);
 
     console.log(response);
   }

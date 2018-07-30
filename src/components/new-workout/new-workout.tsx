@@ -26,7 +26,7 @@ export class NewWorkout {
     async componentWillLoad(){
         this.changeBack.emit("/");
 
-        let response = await get(`http://localhost:8080/user/${this.uid}/workouts/list`);
+        let response = await get(`/user/${this.uid}/workouts/list`);
 
         this.workouts = response;
     }
@@ -34,7 +34,7 @@ export class NewWorkout {
     async handleSubmit(e){
         e.preventDefault();
         
-        let data = await post(`http://localhost:8080/user/${this.uid}/workout/new`, {
+        let data = await post(`/user/${this.uid}/workout/new`, {
             name: this.workoutName,
             timestamp: moment().utc().valueOf()
         })

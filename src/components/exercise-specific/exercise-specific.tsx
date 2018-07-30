@@ -30,7 +30,7 @@ export class ExerciseSpecific {
     plotly: any = window.Plotly;
 
     async componentWillLoad(){
-        let results = await get(`http://localhost:8080/user/${this.uid}/excercise/${this.match.params.eid}/detail`);
+        let results = await get(`/user/${this.uid}/excercise/${this.match.params.eid}/detail`);
 
         this.excercise = { ...results }     
     }

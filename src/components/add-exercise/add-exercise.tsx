@@ -18,7 +18,7 @@ export class AddExercise {
         this.changeBack.emit("/workout/active");
         this.setContextMenu.emit("");
 
-        let response = await get("http://localhost:8080/exercises/list");
+        let response = await get("/exercises/list");
         
         this.exercises = response;
     }

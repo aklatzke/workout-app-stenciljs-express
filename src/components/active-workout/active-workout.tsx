@@ -20,7 +20,7 @@ export class ActiveWorkout {
 
     async componentWillLoad(){
         this.changeBack.emit("/");
-        this.workout = await get(`http://localhost:8080/user/${this.uid}/workout/active`);
+        this.workout = await get(`/user/${this.uid}/workout/active`);
         this.setContextMenu.emit( this.contextMenu() )
     }
 
@@ -52,7 +52,7 @@ export class ActiveWorkout {
     }
 
     async finishWorkout(){
-        let response = await post(`http://localhost:8080/workout/${this.workout._id}/finish`);
+        let response = await post(`/workout/${this.workout._id}/finish`);
 
         this.activeWorkoutChange.emit();
 
