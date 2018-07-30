@@ -1,0 +1,39 @@
+exercise-group {
+    width: 100%;
+}
+
+.group{
+    background-color: #444;
+    border-bottom: 1px solid #222;
+}
+
+.group h6{
+    margin: 0;
+}
+
+.group i{
+    font-size: 18px;
+}
+
+.group-expanded{
+    background-color: white;
+}
+
+.group-expanded h6{
+    color: #444;
+}
+
+.exercise-records li{
+    list-style-type: none;
+    border-bottom: 1px solid #cdcdcd;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    text-transform: capitalize;
+    font-weight: bold;
+}
+
+.exercise-records li i{
+    font-size: 12px;
+    position: relative;
+    top: 4px;
+}

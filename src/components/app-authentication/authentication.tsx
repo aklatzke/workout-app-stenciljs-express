@@ -8,6 +8,21 @@ declare global {
   }
 }
 
+if( ! window.firebase ){
+  window.firebase = {};
+  window.firebase.auth = () => {
+    return {
+      onAuthStateChanged : () => {
+
+      },
+      signInWithRedirect : () => {
+        
+      }
+    }
+  };
+  window.firebase.auth.GoogleAuthProvider = () => {};
+}
+
 @Component({
   tag: 'app-authentication',
   styleUrl: 'authentication.css'
@@ -15,12 +30,11 @@ declare global {
 
 export class Authentication {
   @Event() authenticationResponse: EventEmitter;
-  auth = window.firebase.auth;
 
   componentDidLoad = () => {
-    this.auth().onAuthStateChanged(res => {
+    window.firebase.auth().onAuthStateChanged(res => {
       if( ! res ){
-        this.auth().signInWithRedirect(new this.auth.GoogleAuthProvider());
+        window.firebase.auth().signInWithRedirect(new window.firebase.auth.GoogleAuthProvider());
       }
       else {
         let { email, displayName, uid } = res;

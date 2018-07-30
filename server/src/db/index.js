@@ -1,3 +1,3 @@
 import mongo from 'then-mongo';
 
-export default mongo('workout', ['workouts', 'users', 'exercises']);
+export default mongo('workout', ['workouts', 'users', 'exercises', 'exerciseReference']);

@@ -6,7 +6,6 @@ class ResponseType{
   favExercises: Object;
 }
 
-
 @Component({
   tag: 'workouts-dashboard',
   styleUrl: 'workouts-dashboard.css'
@@ -14,8 +13,10 @@ class ResponseType{
 
 export class WorkoutsDashboard {
   @Event() changeBack : EventEmitter;
+  @Event() setContextMenu: EventEmitter;
 
   @Prop() uid: string;
+  @Prop() hasActiveWorkout: boolean;
   
   plotly: any = window.Plotly;
 
@@ -29,6 +30,10 @@ export class WorkoutsDashboard {
     let exerciseXAxis = Object.keys(response.favExercises).slice(0, 5);
     let exerciseYAxis = exerciseXAxis.map(key => response.favExercises[key]);
     let exerciseElement = document.querySelector("#favorite-exercises");    
+
+    this.changeBack.emit(false);
+
+    this.setContextMenu.emit(this.contextMenu())
 
     let layout = {
       margin: {
@@ -90,14 +95,49 @@ export class WorkoutsDashboard {
       x: exerciseXAxis,
       y: exerciseYAxis     
     }], layout)    
+  }
 
-    this.changeBack.emit(false);
+  contextMenu(){
+    return (
+      <stencil-route-link url="">
+        <button class='btn btn-sm btn-primary btn-just-icon'>
+          <i class='fa fa-user'></i>
+        </button>
+      </stencil-route-link>      
+    )
+  }
+
+  renderWorkoutButton(){
+    if( this.hasActiveWorkout ){
+      return (
+        <stencil-route-link url="/workout/active">
+          <button class='btn btn-block btn-sm btn-outline-primary'>
+            Active Workout
+          </button>
+        </stencil-route-link>
+      )
+    }
+    else{
+      return (
+        <stencil-route-link url="/workout/new">
+            <button class='btn btn-block btn-sm btn-outline-primary'>
+              Start Workout
+            </button>
+        </stencil-route-link>
+      )
+    }
   }
 
   render() {
     return (
       <div class="graph-container pl-2 pr-2">
         <h3>Dashboard</h3>
+        <hr />
+        <div class='row'>
+          <div class='col-12'>
+            { this.renderWorkoutButton() }
+          </div>
+        </div>
         <hr />
         <div class="row">
           <div class='col-12 col-md-5 offset-md-1'>
@@ -114,17 +154,13 @@ export class WorkoutsDashboard {
         </div>
 
         <div class="row">
-          
           <div class="col-12">
             <workout-list uid={this.uid}></workout-list>
           </div>
         </div>
-       
-
-
-
       </div>
 
     )
   }
 }
+ 

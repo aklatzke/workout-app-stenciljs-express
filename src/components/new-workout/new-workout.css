@@ -1,0 +1,19 @@
+new-workout {
+ 
+}
+
+.form-control.underline-control {
+    border: 0;
+    border-bottom: 1px solid #51bcda;
+    background-color: transparent;
+    border-radius: 0;
+    font-size: 18px;
+}
+
+.form-control.underline-control:focus{
+    border-color: teal;
+    border: 0;
+    border-bottom: 1px solid #51bcda;
+    background-color: transparent;
+    color: #51bcda;
+}

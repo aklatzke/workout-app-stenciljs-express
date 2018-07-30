@@ -18,9 +18,7 @@ export class WorkoutList {
 
     async componentDidLoad(){
         let response = await get(`http://localhost:8080/user/exercises/all/?uid=${this.uid}`);
-
         this.list = [...response];
-
     }
 
     render() {
@@ -29,10 +27,9 @@ export class WorkoutList {
                 <h4>Graphs & Data</h4>
                 <hr />
                 {this.list.map( item => {
-                    console.log(item);
                     return (
                         <stencil-route-link url={ `/exercise/${item._id}` }>
-                            <button class='btn btn-primary mr-2 mb-2'>{item.name}</button>
+                            <button class='btn btn-primary btn-sm mr-2 mb-2'>{item.name}</button>
                         </stencil-route-link>
                     )
                 })}

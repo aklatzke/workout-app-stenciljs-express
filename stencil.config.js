@@ -1,8 +1,5 @@
 // https://stenciljs.com/docs/config
 
 exports.config = {
-  globalStyle: 'src/global/app.css',
-  plugins: [
-    sass()
-  ]
+  globalStyle: 'src/global/app.css'
 };

@@ -1,0 +1,21 @@
+active-workout-bar {
+    /* Component styles go here */
+}
+
+.active-workout-bar{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #fff;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    font-size: 14px;
+    border-top: 2px solid #000;
+    color: #444;
+}
+
+.timer{
+    color: #51cbce;
+    font-weight: bold;
+}

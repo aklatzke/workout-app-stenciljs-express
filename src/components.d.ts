@@ -26,10 +26,124 @@ declare global {
 }
 
 import '@stencil/router';
+import '@stencil/state-tunnel';
 
 import {
+  WorkoutType,
+} from './interfaces/WorkoutType';
+import {
   MatchResults,
+  RouterHistory,
 } from '@stencil/router';
+import {
+  ExerciseType,
+} from './interfaces/ExerciseType';
+
+declare global {
+
+  namespace StencilComponents {
+    interface ActiveWorkoutBar {
+      'activeWorkout': WorkoutType;
+    }
+  }
+
+  interface HTMLActiveWorkoutBarElement extends StencilComponents.ActiveWorkoutBar, HTMLStencilElement {}
+
+  var HTMLActiveWorkoutBarElement: {
+    prototype: HTMLActiveWorkoutBarElement;
+    new (): HTMLActiveWorkoutBarElement;
+  };
+  interface HTMLElementTagNameMap {
+    'active-workout-bar': HTMLActiveWorkoutBarElement;
+  }
+  interface ElementTagNameMap {
+    'active-workout-bar': HTMLActiveWorkoutBarElement;
+  }
+  namespace JSX {
+    interface IntrinsicElements {
+      'active-workout-bar': JSXElements.ActiveWorkoutBarAttributes;
+    }
+  }
+  namespace JSXElements {
+    export interface ActiveWorkoutBarAttributes extends HTMLAttributes {
+      'activeWorkout'?: WorkoutType;
+    }
+  }
+}
+
+
+declare global {
+
+  namespace StencilComponents {
+    interface ActiveWorkout {
+      'history': RouterHistory;
+      'uid': string;
+    }
+  }
+
+  interface HTMLActiveWorkoutElement extends StencilComponents.ActiveWorkout, HTMLStencilElement {}
+
+  var HTMLActiveWorkoutElement: {
+    prototype: HTMLActiveWorkoutElement;
+    new (): HTMLActiveWorkoutElement;
+  };
+  interface HTMLElementTagNameMap {
+    'active-workout': HTMLActiveWorkoutElement;
+  }
+  interface ElementTagNameMap {
+    'active-workout': HTMLActiveWorkoutElement;
+  }
+  namespace JSX {
+    interface IntrinsicElements {
+      'active-workout': JSXElements.ActiveWorkoutAttributes;
+    }
+  }
+  namespace JSXElements {
+    export interface ActiveWorkoutAttributes extends HTMLAttributes {
+      'history'?: RouterHistory;
+      'onActiveWorkoutChange'?: (event: CustomEvent) => void;
+      'onChangeBack'?: (event: CustomEvent) => void;
+      'onSetContextMenu'?: (event: CustomEvent) => void;
+      'uid'?: string;
+    }
+  }
+}
+
+
+declare global {
+
+  namespace StencilComponents {
+    interface AddExercise {
+      'activeWorkout': string;
+    }
+  }
+
+  interface HTMLAddExerciseElement extends StencilComponents.AddExercise, HTMLStencilElement {}
+
+  var HTMLAddExerciseElement: {
+    prototype: HTMLAddExerciseElement;
+    new (): HTMLAddExerciseElement;
+  };
+  interface HTMLElementTagNameMap {
+    'add-exercise': HTMLAddExerciseElement;
+  }
+  interface ElementTagNameMap {
+    'add-exercise': HTMLAddExerciseElement;
+  }
+  namespace JSX {
+    interface IntrinsicElements {
+      'add-exercise': JSXElements.AddExerciseAttributes;
+    }
+  }
+  namespace JSXElements {
+    export interface AddExerciseAttributes extends HTMLAttributes {
+      'activeWorkout'?: string;
+      'onChangeBack'?: (event: CustomEvent) => void;
+      'onSetContextMenu'?: (event: CustomEvent) => void;
+    }
+  }
+}
+
 
 declare global {
 
@@ -199,6 +313,76 @@ declare global {
 declare global {
 
   namespace StencilComponents {
+    interface ExerciseGroup {
+      'activeWorkout': string;
+      'records': [ExerciseType];
+      'title': string;
+    }
+  }
+
+  interface HTMLExerciseGroupElement extends StencilComponents.ExerciseGroup, HTMLStencilElement {}
+
+  var HTMLExerciseGroupElement: {
+    prototype: HTMLExerciseGroupElement;
+    new (): HTMLExerciseGroupElement;
+  };
+  interface HTMLElementTagNameMap {
+    'exercise-group': HTMLExerciseGroupElement;
+  }
+  interface ElementTagNameMap {
+    'exercise-group': HTMLExerciseGroupElement;
+  }
+  namespace JSX {
+    interface IntrinsicElements {
+      'exercise-group': JSXElements.ExerciseGroupAttributes;
+    }
+  }
+  namespace JSXElements {
+    export interface ExerciseGroupAttributes extends HTMLAttributes {
+      'activeWorkout'?: string;
+      'records'?: [ExerciseType];
+      'title'?: string;
+    }
+  }
+}
+
+
+declare global {
+
+  namespace StencilComponents {
+    interface ExerciseSingle {
+      'data': any;
+    }
+  }
+
+  interface HTMLExerciseSingleElement extends StencilComponents.ExerciseSingle, HTMLStencilElement {}
+
+  var HTMLExerciseSingleElement: {
+    prototype: HTMLExerciseSingleElement;
+    new (): HTMLExerciseSingleElement;
+  };
+  interface HTMLElementTagNameMap {
+    'exercise-single': HTMLExerciseSingleElement;
+  }
+  interface ElementTagNameMap {
+    'exercise-single': HTMLExerciseSingleElement;
+  }
+  namespace JSX {
+    interface IntrinsicElements {
+      'exercise-single': JSXElements.ExerciseSingleAttributes;
+    }
+  }
+  namespace JSXElements {
+    export interface ExerciseSingleAttributes extends HTMLAttributes {
+      'data'?: any;
+    }
+  }
+}
+
+
+declare global {
+
+  namespace StencilComponents {
     interface ExerciseSpecific {
       'match': MatchResults;
       'uid': string;
@@ -225,6 +409,43 @@ declare global {
   namespace JSXElements {
     export interface ExerciseSpecificAttributes extends HTMLAttributes {
       'match'?: MatchResults;
+      'onChangeBack'?: (event: CustomEvent) => void;
+      'uid'?: string;
+    }
+  }
+}
+
+
+declare global {
+
+  namespace StencilComponents {
+    interface NewWorkout {
+      'history': RouterHistory;
+      'uid': string;
+    }
+  }
+
+  interface HTMLNewWorkoutElement extends StencilComponents.NewWorkout, HTMLStencilElement {}
+
+  var HTMLNewWorkoutElement: {
+    prototype: HTMLNewWorkoutElement;
+    new (): HTMLNewWorkoutElement;
+  };
+  interface HTMLElementTagNameMap {
+    'new-workout': HTMLNewWorkoutElement;
+  }
+  interface ElementTagNameMap {
+    'new-workout': HTMLNewWorkoutElement;
+  }
+  namespace JSX {
+    interface IntrinsicElements {
+      'new-workout': JSXElements.NewWorkoutAttributes;
+    }
+  }
+  namespace JSXElements {
+    export interface NewWorkoutAttributes extends HTMLAttributes {
+      'history'?: RouterHistory;
+      'onActiveWorkoutChange'?: (event: CustomEvent) => void;
       'onChangeBack'?: (event: CustomEvent) => void;
       'uid'?: string;
     }
@@ -269,6 +490,7 @@ declare global {
 
   namespace StencilComponents {
     interface WorkoutsDashboard {
+      'hasActiveWorkout': boolean;
       'uid': string;
     }
   }
@@ -292,7 +514,9 @@ declare global {
   }
   namespace JSXElements {
     export interface WorkoutsDashboardAttributes extends HTMLAttributes {
+      'hasActiveWorkout'?: boolean;
       'onChangeBack'?: (event: CustomEvent) => void;
+      'onSetContextMenu'?: (event: CustomEvent) => void;
       'uid'?: string;
     }
   }

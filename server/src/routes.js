@@ -14,8 +14,8 @@ workoutRoutes(routes, db);
 /**
  * GET home page
  */
-routes.get('/', (req, res) => {
-  res.render('index', { title: 'Express Babel' });
+routes.get('*', (req, res) => {
+  res.sendFile("../../www/index.html");
 });
 
 

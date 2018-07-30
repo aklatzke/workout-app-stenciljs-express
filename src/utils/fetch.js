@@ -24,3 +24,11 @@ export const get = async( url ) => {
 
     return response;
 }
+
+export const getWithOptions = async ( url, options = {} ) => {
+    let response = await get( url, options );
+
+    if( response ){
+        return response;
+    }
+}

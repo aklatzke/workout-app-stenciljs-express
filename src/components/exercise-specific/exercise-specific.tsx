@@ -41,7 +41,7 @@ export class ExerciseSpecific {
         let graphElement = document.querySelector("#date-plot");
         let values = Object.keys(this.excercise.data).map(key => this.excercise.data[key].avgRep);
         let nums = this.excercise.rawArray.map(i => i.avgRep).sort( (a, b) => a - b );
-        console.log(nums);
+
         let max = nums[nums.length - 1] + 50;
         let min = nums[0] - 50;
 
@@ -53,7 +53,7 @@ export class ExerciseSpecific {
         let timestamps = Object.keys(this.excercise.data).map( timestamp => parseInt(timestamp) );
 
         this.mostRecent = values[values.length - 1];
-        this.mostRecentVs = Math.round(this.mostRecent / max * 100 * 100) / 100;
+        this.mostRecentVs = Math.round(this.mostRecent/this.highest * 100);
 
         
 
@@ -72,11 +72,9 @@ export class ExerciseSpecific {
 
             let layout = {
                 autosize: true,
-                plot_bgcolor: "#343434",
+                plot_bgcolor: "#121212",
                 paper_bgcolor: "#343434",
-                line: {
-                    color: "#fff"
-                },
+                linecolor: "#fff",
                 margin: {
                     l: 30,
                     r: 30,
@@ -90,16 +88,16 @@ export class ExerciseSpecific {
                     tickfont: {
                         color: "#fff"
                     },
-                    line: {
-                        color: "#fff"
-                    }
+                    linecolor: "#fff",
+                    gridcolor: "#444"
                 },
                 xaxis: {
                     tickvals: [moment.unix(minDate).format('MMM Do YYYY'), moment.unix(maxDate).format('MMM Do YYYY')],
                     tickcolor: "#fff",
                     tickfont: {
                         color: "#fff"
-                    }                    
+                    },
+                    linecolor: "#fff"
                 }
             }
 
@@ -120,8 +118,8 @@ export class ExerciseSpecific {
                     </div>
                     <div class="row">
                         <div class="col-12 pt-5">
-                            <div class='tile'><div class='tile-inner'><strong>Highest Average Rep</strong> {this.highest}</div></div>
-                            <div class='tile'><div class='tile-inner'><strong>Lowest Average Rep</strong> {this.lowest}</div></div>
+                            <div class='tile'><div class='tile-inner'><strong>Highest Avg. Rep</strong> {this.highest}</div></div>
+                            <div class='tile'><div class='tile-inner'><strong>Lowest Avg. Rep</strong> {this.lowest}</div></div>
                             <div class='tile tile-full'><div class='tile-inner'><strong>Percent Change</strong> {this.percentChange}%</div></div>
                         </div>
                         <div class="col-12 pt-3">

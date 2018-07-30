@@ -16,7 +16,7 @@ export default (r, db) => {
     });
 
     let exercises = {}
-    let exerciseRecords = await db.exercises.find({})
+    let exerciseRecords = await db.exerciseReference.find({})
     
     exerciseRecords.forEach(obj => {
         exercises[obj._id] = obj
@@ -89,7 +89,7 @@ export default (r, db) => {
     });
 
     let exerciseMap = {};
-    let exercises = await db.exercises.find({});
+    let exercises = await db.exerciseReference.find({});
 
     exercises.forEach( obj => exerciseMap[obj._id] = obj );
 
@@ -121,7 +121,7 @@ export default (r, db) => {
       exercises: { $elemMatch: { exerciseId: db.ObjectId(req.params.eid) } }
     });
 
-    let exerciseRecord = await db.exercises.findOne({ _id : db.ObjectId(req.params.eid) });
+    let exerciseRecord = await db.exerciseReference.findOne({ _id : db.ObjectId(req.params.eid) });
 
     let targetExcercises = {
       data: {
@@ -165,5 +165,96 @@ export default (r, db) => {
     targetExcercises.rawArray = Object.keys(targetExcercises.data).map(key => targetExcercises.data[key]);
 
     res.json(targetExcercises);
+  })
+
+  r.get("/user/:uid/workouts/list", async(req, res) => {
+    let workouts = await db.workouts.find({
+      uid: db.ObjectId(req.params.uid)
+    });
+
+    let workoutResponse = workouts.map( record => ({
+      _id: record._id,
+      name: record.name
+    }) )
+
+    res.json(workoutResponse);
+  })
+
+  r.post("/user/:uid/workout/new", async(req, res) => {
+
+    if( req.body.template ){
+
+    }
+    else{
+      let insert = await db.workouts.insert({ 
+        name: req.body.name,
+        date: req.body.timestamp,
+        uid: req.params.uid,
+        isActive: true
+      })
+
+      res.json(insert);
+    }
+  })
+
+  r.get("/user/:uid/workout/active", async(req,res) => {
+    let activeWorkout = await db.workouts.findOne({
+      uid: req.params.uid,
+      isActive: true
+    })
+
+    res.json(activeWorkout);
+  })
+
+  r.get("/exercises/list", async(req, res) => {
+    let exercises = await db.exerciseReference.find({});
+    let groups = {};
+
+    exercises.forEach(record => {
+      if( ! groups[record.muscleGroup] )
+        groups[record.muscleGroup] = [];
+
+      groups[record.muscleGroup].push(record);
+    })
+
+    return res.json(groups);
+  })
+
+  r.get("/workout/:id/add/:eid", async(req, res) => {
+    let object = {
+      exerciseId: req.params.eid,
+      set_order: 1,
+      weight: 0,
+      weight_unit: "lbs",
+      reps: 0,
+      distance: null,
+      distance_unit: null,
+      seconds: 0,
+      notes: ""
+    };
+
+    let record = await db.workouts.find({
+          _id: db.ObjectId(req.params.id)
+        })
+
+    let val = await db.workouts.update({
+      _id: db.ObjectId(req.params.id)
+    }, {
+      $push : {
+        exercises: object
+      }
+    })
+
+    res.json(val);
+  })
+
+  r.post("/workout/:wId/finish", async(req, res) => {
+    let result = await db.workouts.update({
+      _id: db.ObjectId(req.params.wId)
+    }, {
+      isActive: false
+    });
+
+    res.json(result);
   })
 }
