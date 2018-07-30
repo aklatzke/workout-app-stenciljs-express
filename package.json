@@ -4,7 +4,7 @@
   "version": "0.0.1",
   "description": "Stencil App Starter",
   "scripts": {
-    "start" : "cd server && yarn start",
+    "start" : "cd server && npm start",
     "build": "stencil build --prerender",
     "dev": "stencil build --dev --watch --serve",
     "test": "jest",
