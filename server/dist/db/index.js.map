@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../src/db/index.js"],"names":[],"mappings":";;;;;;AAAA;;;;;;kBAEe,yBAAM,SAAN,EAAiB,CAAC,UAAD,EAAa,OAAb,EAAsB,WAAtB,EAAmC,mBAAnC,CAAjB,C","file":"index.js","sourcesContent":["import mongo from 'then-mongo';\n\nexport default mongo('workout', ['workouts', 'users', 'exercises', 'exerciseReference']);\n"]}
