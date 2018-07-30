@@ -7,6 +7,7 @@
     "start" : "cd server && npm start",
     "build": "stencil build --prerender",
     "dev": "stencil build --dev --watch --serve",
+    "preinstall": "cd server && npm install",
     "test": "jest",
     "test.watch": "jest --watch",
     "start-dev": "concurrently 'yarn dev' 'cd server && yarn dev'"
