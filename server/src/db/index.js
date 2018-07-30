@@ -1,3 +1,3 @@
 import mongo from 'then-mongo';
 
-export default mongo('workout', ['workouts', 'users', 'exercises', 'exerciseReference']);
+export default mongo(process.env.MONGODB_URI || 'workout', ['workouts', 'users', 'exercises', 'exerciseReference']);
