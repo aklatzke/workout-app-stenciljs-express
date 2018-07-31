@@ -114,6 +114,7 @@ declare global {
 
   namespace StencilComponents {
     interface AddExercise {
+      'activeExercises': [string];
       'activeWorkout': string;
     }
   }
@@ -137,6 +138,7 @@ declare global {
   }
   namespace JSXElements {
     export interface AddExerciseAttributes extends HTMLAttributes {
+      'activeExercises'?: [string];
       'activeWorkout'?: string;
       'onChangeBack'?: (event: CustomEvent) => void;
       'onSetContextMenu'?: (event: CustomEvent) => void;
@@ -315,6 +317,7 @@ declare global {
   namespace StencilComponents {
     interface ExerciseGroup {
       'activeWorkout': string;
+      'existing': any;
       'records': [ExerciseType];
       'title': string;
     }
@@ -340,6 +343,7 @@ declare global {
   namespace JSXElements {
     export interface ExerciseGroupAttributes extends HTMLAttributes {
       'activeWorkout'?: string;
+      'existing'?: any;
       'records'?: [ExerciseType];
       'title'?: string;
     }

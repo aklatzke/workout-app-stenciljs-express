@@ -141,7 +141,7 @@ class AppRoot {
                     h("stencil-route", { url: '/workout/new', component: 'new-workout', exact: true, componentProps: { uid: this.activeUser._id } }),
                     h("stencil-route", { url: "/workout/active", component: 'active-workout', exact: true, componentProps: { uid: this.activeUser._id } }),
                     this.hasActiveWorkout ?
-                        h("stencil-route", { url: "/workout/active/add", component: 'add-exercise', exact: true, componentProps: { uid: this.activeUser._id, activeWorkout: this.activeWorkout._id } }) :
+                        h("stencil-route", { url: "/workout/active/add", component: 'add-exercise', exact: true, componentProps: { uid: this.activeUser._id, activeWorkout: this.activeWorkout._id, activeExercises: this.activeWorkout.exercises.map(i => i.exerciseId) } }) :
                         null))));
     }
     maybeRenderBack() {

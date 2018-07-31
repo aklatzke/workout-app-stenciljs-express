@@ -13,14 +13,16 @@ export class AddExercise {
     @State() exercises: Object;
 
     @Prop() activeWorkout: string;
+    @Prop() activeExercises: [string];
 
     async componentWillLoad(){
         this.changeBack.emit("/workout/active");
         this.setContextMenu.emit("");
 
         let response = await get("/exercises/list");
-        
         this.exercises = response;
+
+        console.log(this.activeExercises);
     }
 
     renderGroups(){
@@ -28,7 +30,7 @@ export class AddExercise {
             return (
                 <div class='row'>
                     {Object.keys(this.exercises).sort().map(key => {
-                        return <exercise-group activeWorkout={this.activeWorkout} title={key} records={this.exercises[key]} ></exercise-group>
+                        return <exercise-group activeWorkout={this.activeWorkout} title={key} records={this.exercises[key]} existing={this.activeExercises} ></exercise-group>
                     })}
                 </div>
             )

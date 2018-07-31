@@ -11,20 +11,48 @@ export class ExerciseGroup {
     @Prop() records: [ExerciseType];
     @Prop() title: string;
     @Prop() activeWorkout: string;
+    @Prop() existing: any;
+
     @State() expanded: boolean = false;
+    @State() addedItems: any = [];
 
     async addExercise(id){
-        console.log(this.activeWorkout)
         let response = await get(`/workout/${this.activeWorkout}/add/${id}`);
 
-        console.log(response);
+        if( response ){
+            this.addedItems = [...this.addedItems, id];
+        }
+    }
+
+    async removeExercise(id){
+        let response = await get(`/workout/${this.activeWorkout}/remove/${id}`);
+
+        if( response ){
+            this.addedItems = [...this.addedItems, id];
+        }
     }
 
     renderItems(){
         if( this.expanded ){
+            console.log(this.records);
             return (
                 <ul class="col-12 pl-4 pr-4 exercise-records mt-4">
-                    {this.records.map(item => <li onClick={() => this.addExercise(item._id)}>{item.name} <i class='fa fa-plus float-right'></i></li> ) }
+                    {this.records.map(item => {
+                        if( this.existing.includes(item._id) || this.addedItems.includes(item._id) ){
+                            return (        
+                                <li onClick={() => this.removeExercise(item._id)}>
+                                    {item.name} <i class='fa fa-check float-right'></i>
+                                </li> 
+                            )
+                        }
+                        else {
+                            return (        
+                                <li onClick={() => this.addExercise(item._id)}>
+                                    {item.name} <i class='fa fa-plus float-right'></i>
+                                </li> 
+                            )
+                        }
+                    } ) }
                 </ul>
             )
         }

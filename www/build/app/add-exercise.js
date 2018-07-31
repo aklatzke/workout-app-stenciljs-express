@@ -18,12 +18,13 @@ class AddExercise {
             this.setContextMenu.emit("");
             let response = yield get("/exercises/list");
             this.exercises = response;
+            console.log(this.activeExercises);
         });
     }
     renderGroups() {
         if (this.exercises) {
             return (h("div", { class: 'row' }, Object.keys(this.exercises).sort().map(key => {
-                return h("exercise-group", { activeWorkout: this.activeWorkout, title: key, records: this.exercises[key] });
+                return h("exercise-group", { activeWorkout: this.activeWorkout, title: key, records: this.exercises[key], existing: this.activeExercises });
             })));
         }
     }
@@ -32,6 +33,10 @@ class AddExercise {
     }
     static get is() { return "add-exercise"; }
     static get properties() { return {
+        "activeExercises": {
+            "type": "Any",
+            "attr": "active-exercises"
+        },
         "activeWorkout": {
             "type": String,
             "attr": "active-workout"
@@ -67,20 +72,41 @@ var __awaiter$1 = (undefined && undefined.__awaiter) || function (thisArg, _argu
 class ExerciseGroup {
     constructor() {
         this.expanded = false;
+        this.addedItems = [];
     }
     addExercise(id) {
         return __awaiter$1(this, void 0, void 0, function* () {
-            console.log(this.activeWorkout);
             let response = yield get(`/workout/${this.activeWorkout}/add/${id}`);
-            console.log(response);
+            if (response) {
+                this.addedItems = [...this.addedItems, id];
+            }
+        });
+    }
+    removeExercise(id) {
+        return __awaiter$1(this, void 0, void 0, function* () {
+            let response = yield get(`/workout/${this.activeWorkout}/remove/${id}`);
+            if (response) {
+                this.addedItems = [...this.addedItems, id];
+            }
         });
     }
     renderItems() {
         if (this.expanded) {
-            return (h("ul", { class: "col-12 pl-4 pr-4 exercise-records mt-4" }, this.records.map(item => h("li", { onClick: () => this.addExercise(item._id) },
-                item.name,
-                " ",
-                h("i", { class: 'fa fa-plus float-right' })))));
+            console.log(this.records);
+            return (h("ul", { class: "col-12 pl-4 pr-4 exercise-records mt-4" }, this.records.map(item => {
+                if (this.existing.includes(item._id) || this.addedItems.includes(item._id)) {
+                    return (h("li", { onClick: () => this.removeExercise(item._id) },
+                        item.name,
+                        " ",
+                        h("i", { class: 'fa fa-check float-right' })));
+                }
+                else {
+                    return (h("li", { onClick: () => this.addExercise(item._id) },
+                        item.name,
+                        " ",
+                        h("i", { class: 'fa fa-plus float-right' })));
+                }
+            })));
         }
     }
     render() {
@@ -98,6 +124,13 @@ class ExerciseGroup {
         "activeWorkout": {
             "type": String,
             "attr": "active-workout"
+        },
+        "addedItems": {
+            "state": true
+        },
+        "existing": {
+            "type": "Any",
+            "attr": "existing"
         },
         "expanded": {
             "state": true
