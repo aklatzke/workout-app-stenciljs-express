@@ -1,1 +1,52 @@
-body{margin:0;padding:56px 0 60px;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";background-color:#343434;overflow-x:hidden}*{box-sizing:border-box}.modebar{display:none!important}body h1,body h2,body h3,body h4,body h5,body h6{color:#fff;margin-top:0}body h3{margin-top:20px}.navbar{position:fixed;left:0;right:0;top:0;z-index:999;border-bottom:2px solid #000}.navbar .btn i{position:relative;left:1px}
+/*
+  Global App CSS
+  ----------------------
+  Use this file for styles that should be applied to all components.
+  For example, "font-family" within the "body" selector is a CSS property
+  most apps will want applied to all components.
+
+  Any global CSS variables should also be applied here.
+*/
+
+
+body {
+  margin: 0px;
+  padding: 0px;
+  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  background-color: #343434;
+  padding-top: 56px;
+  overflow-x: hidden;
+  padding-bottom: 60px;
+}
+
+
+*{
+  box-sizing: border-box;
+}
+
+.modebar {
+  display: none !important;
+}
+
+body h1, body h2, body h3, body h4, body h5, body h6{
+  color: white;
+  margin-top: 0px;
+}
+
+body h3{
+  margin-top: 20px;
+}
+
+.navbar{
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: 999;
+  border-bottom: 2px solid #000;
+}
+
+.navbar .btn i{
+  position: relative;
+  left: 1px;
+}

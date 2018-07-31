@@ -1,6 +1,9 @@
-let prefix = window.location.hostname === "localhost" ? "http://localhost:8080" : "";
+/*! Built with http://stenciljs.com */
+const { h } = window.App;
 
-export const post = async (url, data = {}) => {
+let prefix = window.location.hostname === "localhost:3333" ? "http://localhost:8080" : "";
+
+const post = async (url, data = {}) => {
     let response = await fetch(prefix + url, {
         method: "POST",
         cache: "no-cache",
@@ -8,16 +11,16 @@ export const post = async (url, data = {}) => {
             "Content-Type": "application/json; charset=utf-8"
         },
         body: JSON.stringify(data)
-    })
+    });
 
     if( response ){
         response = await response.json();
     }
 
     return response;
-}
+};
 
-export const get = async( url ) => {
+const get = async( url ) => {
     let response = await fetch(prefix + url);
 
     if( response ){
@@ -25,12 +28,6 @@ export const get = async( url ) => {
     }
 
     return response;
-}
+};
 
-export const getWithOptions = async ( url, options = {} ) => {
-    let response = await get( url, options );
-
-    if( response ){
-        return response;
-    }
-}
+export { get as a, post as b };

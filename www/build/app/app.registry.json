@@ -2,63 +2,63 @@
   "namespace": "App",
   "fsNamespace": "app",
   "loader": "../app.js",
+  "corePolyfilled": "es5-build-disabled.js",
   "global": "app.global.js",
-  "core": "app.y1azaamh.js",
-  "corePolyfilled": "app.ywobmiif.js",
+  "core": "app.core.js",
   "components": {
     "active-workout": {
-      "$": "zcx6388d"
+      "$": "active-workout"
     },
     "active-workout-bar": {
-      "$": "ayc6wwlx"
+      "$": "active-workout-bar"
     },
     "add-exercise": {
-      "$": "2b23ycgv"
+      "$": "add-exercise"
     },
     "app-authentication": {
-      "$": "ayc6wwlx"
+      "$": "active-workout-bar"
     },
     "app-home": {
-      "$": "cotdvesv"
+      "$": "app-home"
     },
     "app-profile": {
-      "$": "ucc3bman"
+      "$": "app-profile"
     },
     "app-root": {
-      "$": "ayc6wwlx"
+      "$": "active-workout-bar"
     },
     "display-workouts": {
-      "$": "6zhb0fxf"
+      "$": "display-workouts"
     },
     "exercise-group": {
-      "$": "2b23ycgv"
+      "$": "add-exercise"
     },
     "exercise-single": {
-      "$": "zcx6388d"
+      "$": "active-workout"
     },
     "exercise-specific": {
-      "$": "o9hkhai2"
+      "$": "exercise-specific"
     },
     "new-workout": {
-      "$": "ogzelk67"
+      "$": "new-workout"
     },
     "stencil-route": {
-      "$": "m1ly74ym"
+      "$": "stencil-route"
     },
     "stencil-route-link": {
-      "$": "jbntkkin"
+      "$": "stencil-route-link"
     },
     "stencil-route-switch": {
-      "$": "m1ly74ym"
+      "$": "stencil-route"
     },
     "stencil-router": {
-      "$": "m1ly74ym"
+      "$": "stencil-route"
     },
     "workout-list": {
-      "$": "dwp4zn76"
+      "$": "workout-list"
     },
     "workouts-dashboard": {
-      "$": "dwp4zn76"
+      "$": "workout-list"
     }
   }
 }

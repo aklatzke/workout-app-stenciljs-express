@@ -1,6 +1,8 @@
 /*! Built with http://stenciljs.com */
 const { h } = window.App;
 
+let prefix = window.location.hostname === "localhost:3333" ? "http://localhost:8080" : "";
+
 const post = async (url, data = {}) => {
     let response = await fetch(url, {
         method: "POST",
